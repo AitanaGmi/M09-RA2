@@ -47,5 +47,26 @@ public class Futbolista extends Thread {
             "Ronaldo", "Lewan", "Belli", "Arnau",
             "Aspas", "Messi", "MBapé"
         };
+
+        for (int i = 0; i < Futbolista.NUM_JUGADORS; i++) {
+            jugadores[i] = new Futbolista(nombres[i]);
+        }
+
+        System.out.println("Inici dels xuts -----------------------");
+        for (int i = 0; i < Futbolista.NUM_JUGADORS; i++) {
+            jugadores[i].start();
+        }
+
+        for (int i = 0; i < Futbolista.NUM_JUGADORS; i++) {
+            jugadores[i].join();
+        }
+
+        System.out.println("Fi dels xuts -----------------------");
+        System.out.println("--- Estadístiques ------");
+
+        for (int i = 0; i < Futbolista.NUM_JUGADORS; i++) {
+            System.out.println(jugadores[i].getName() + " -> "
+                    + jugadores[i].getNgols() + " gols");
+        }
     }
 }
