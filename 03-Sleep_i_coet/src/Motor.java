@@ -1,24 +1,35 @@
+import java.util.Random;
+
 public class Motor extends Thread {
 
     private int potenciaActual;
     private int potenciaObj;
-    private boolean comandaRebuda;
-    private boolean apagar;
+    private Random random;
 
     public Motor(int num) {
         super("Motor " + num);
-        potenciaActual = 0;
-        potenciaObj= 0;
-        comandaRebuda = false;
-        apagar = false;
+        this.potenciaActual = 0;
+        this.potenciaObj = 0;
+        this.random = new Random();
     }
 
-    public void setPotencia(int p){
-        potenciaObj = p;
+    public void setPotencia(int p) {
+        this.potenciaObj = p;
+    }
 
-        if(p == 0){
-            apagar = true;
+    @Override
+    public void run() {
+        boolean sortir = false;
+
+        while (!sortir) {
+            while (potenciaActual != potenciaObj) {
+                if (potenciaActual < potenciaObj) {
+                    potenciaActual++;
+                } else {
+                    potenciaActual--;
+                }
+
+            }
         }
     }
-
 }
