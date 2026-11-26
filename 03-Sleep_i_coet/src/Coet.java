@@ -20,6 +20,7 @@ public class Coet {
 
     public void passaAPotencia(int p) {
         if (p >= 0 && p <= 10) {
+            System.out.println("Passant a potència " + p);
             for (int i = 0; i < motores.length; i++) {
                 motores[i].setPotencia(p);
             }
@@ -37,12 +38,11 @@ public class Coet {
 
         while (true) {
             int p = teclat.nextInt();
+            coet.passaAPotencia(p);
 
             if (p == 0) {
                 break;
             }
-
-            coet.passaAPotencia(p);
         }
 
         teclat.close();
